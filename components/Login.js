@@ -3,6 +3,7 @@ import { useWallet } from '@solana/wallet-adapter-react'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import { Wallet } from '@project-serum/anchor'
 import Payment from './Payment'
+import HomePage from '../pages/homepage'
 
 const styles = {
     LoginPage: `w-screen h-screen bg-white flex justify-center flex-col items-center`,
@@ -12,9 +13,15 @@ const styles = {
 
 const Login = () => {
 
+
+
     const wallet = useWallet()
 
-    if (wallet.connected) return <Payment />
+    // Makes users pay Solana to use app
+    // if (wallet.connected) return <Payment />
+
+    // Makes app free
+    if (wallet.connect) return <HomePage />
 
 
     return (

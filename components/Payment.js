@@ -5,13 +5,12 @@ import { TOKEN_PROGRAM_ID } from '@solana/spl-token'
 import { SOLANA_HOST } from '../utils/const'
 import { useWallet } from '@solana/wallet-adapter-react'
 import { PublicKey } from '@solana/web3.js'
+import HomePage from '../pages/homepage'
 
 const anchor = require('@project-serum/anchor')
 
 const { web3 } = anchor
-
 const { SystemProgram } = web3
-
 const utf8 = anchor.utils.bytes.utf8
 
 const defaultAccounts = {
@@ -35,6 +34,20 @@ const Payment = () => {
     const [payers, setPayers] = useState([])
     const [isPaid, setPaid] = useState(false)
 
+    useEffect(() => {
+        if (wallet.connected) getAllWallets()
+    }, [wallet.connected, isPaid])
+
+    const getAllWallets = async () => {
+        const payerList = await program.account.payerAccount.all()
+        setPayers(payerList)
+
+        payerList.forEach(payer => {
+            if (payer.account.wallet.toBase58() == wallet.publicKey.toBase58())
+                setPaid(true)
+        })
+    }
+
     const payClicked = async () => {
         let [payerSigner] = await anchor.web3.PublicKey.findProgramAddress(
             [utf8.encode('payer'), wallet.publicKey.toBuffer()],
@@ -53,7 +66,7 @@ const Payment = () => {
                     accounts: {
                         payerWallet: payerSigner,
                         receiver: new PublicKey(
-                            '0xcdAf7dd5944be5F36edbfe6e3A3327Fce2791E4D'
+                            '9pDW6oxWf55CfvNXJNLXiidfjWZBuNXKvoZy43kvd3y9'
                         ),
                         authority: wallet.publicKey,
                         ...defaultAccounts,
@@ -68,6 +81,10 @@ const Payment = () => {
     }
 
 
+    // show homepage if user makes payment
+    if (isPaid) return <HomePage />
+
+    // Payment Component
     return (
         <div className={styles.main}>
             <p className={styles.text}>Make payment</p>
@@ -78,7 +95,7 @@ const Payment = () => {
                 >
                     Pay 0.1 Sol
                 </button>
-                <button className={styles.button}>
+                <button className={styles.button} onClick={getAllWallets}>
                     Verify Payment
                 </button>
             </div>

@@ -78,7 +78,16 @@
   background-color: #4e44ce;
 }
 
+.createButton:hover {
+  opacity: 90%;
+}
+
 .cancelButton {
   border: 2px #fe2d55 solid;
   color: #fe2d55;
+}
+
+.cancelButton:hover {
+  background-color: #fe2d55;
+  color: #fff;
 }
