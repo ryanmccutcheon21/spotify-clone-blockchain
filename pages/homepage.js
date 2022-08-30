@@ -23,6 +23,12 @@ const HomePage = () => {
     setShowUploadMusic,
   )
 
+  // useEffect(() => {
+  //   getSongs().then(songs => {
+  //     setSongs(songs)
+  //   })
+  // }, [])
+
   return (
     <div className='flex'>
       <Nav />

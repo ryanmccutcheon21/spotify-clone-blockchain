@@ -3,6 +3,7 @@ import UploadButton from './UploadButton'
 import { useContext } from 'react'
 import { SpotifyContext } from '../context/context'
 import { SP } from 'next/dist/shared/lib/utils'
+import pauseIcon from '../assets/pause.svg'
 
 const styles = {
     header: 'max-w-7xl m-auto p-3',
@@ -15,12 +16,28 @@ const styles = {
     title: 'text-6xl font-extrabold',
     playlistTextContent: 'flex items-end mt-10',
     controlsContainer: 'flex items-center mt-10',
-    playButton: 'bg-green-500 w-16 h-16 flex pl-2 items-center justify-center rounded-full cursor-pointer'
+    playButton: 'bg-green-500 w-16 h-16 flex pl-2 items-center justify-center rounded-full cursor-pointer',
 }
 
 const Header = ({ setShowUploadMusic }) => {
 
-    const { currentSong } = useContext(SpotifyContext)
+
+    const { currentSong,
+        isPlaying,
+        volume,
+        onVolumeChange,
+        timestamp,
+        progress,
+        playNext,
+        playPrevious,
+        isPaused,
+        play,
+        pause,
+        onProgressChange } = useContext(SpotifyContext)
+
+
+
+    // if (!isPlaying) return null
 
 
     return (
@@ -62,7 +79,8 @@ const Header = ({ setShowUploadMusic }) => {
             </div>
             <div className={styles.playlistTextContent}>
                 <Image
-                    src='/assets/album.jpg'
+                    // src='/assets/album.jpg'
+                    src='https://upload.wikimedia.org/wikipedia/en/b/b3/Trippie_Redd_-_A_Love_Letter_to_You_4.png'
                     width={220}
                     height={220}
                     alt='album'
@@ -80,16 +98,32 @@ const Header = ({ setShowUploadMusic }) => {
                                 height={20}
                             />
                         </div>
-                        <p><span className='text-bole'>SteamBeats</span> • 2020 • 46 songs, 3
+                        <p><span className='text-bole'>{currentSong.artiste}</span> • 2020 • 46 songs, 3
                             hr 20 min
                         </p>
                     </div>
                 </div>
             </div>
             <div className={styles.controlsContainer}>
-                <div className={styles.playButton}>
-                    <Image alt='' src='/assets/play.svg' width={30} height={30} />
+
+                <div className={styles.playButton} onClick={play}>
+                    <Image alt='play' src='/assets/play.svg' width={30} height={30} />
                 </div>
+
+                {/* {isPaused ?
+                    <div className={styles.playButton} onClick={play}>
+                        <Image alt='play' src='/assets/play.svg' width={30} height={30} />
+                    </div>
+                    :
+                    <div className={styles.pauseIconStyle} onClick={pause}>
+                        <Image
+                            src={pauseIcon}
+                            alt='pause'
+                            width={30}
+                            height={30}
+                        />
+                    </div>} */}
+
                 <div className={styles.iconContainer}>
                     <Image alt='' src='/assets/heart.svg' width={30} height={30} />
                 </div>

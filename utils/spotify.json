@@ -58,7 +58,7 @@
                 },
                 {
                     "name": "systemProgram",
-                    "isMut": true,
+                    "isMut": false,
                     "isSigner": false
                 },
                 {

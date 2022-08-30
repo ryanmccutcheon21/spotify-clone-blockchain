@@ -11,6 +11,8 @@ import unsplashAlbum from '../assets/unsplashAlbum.jpg'
 import { useContext } from 'react'
 import { SpotifyContext } from '../context/context'
 
+import song from '../data/songs'
+
 const styles = {
     albumCoverContainer: `w-20 h-20 mr-3`,
     mainControl: `fixed bottom-0 left-0 py-3 p-5 pr-10 w-screen bg-[#242424] z-40 flex items-center justify-between`,
@@ -55,7 +57,7 @@ const PlayerControls = ({ songs }) => {
                 </div>
                 <div>
                     <p>{currentSong.title}</p>
-                    <p className='opacity=50'>artist</p>
+                    <p className='opacity=50'>Ryan McCutcheon</p>
                 </div>
             </div>
             <div>
@@ -109,7 +111,8 @@ const PlayerControls = ({ songs }) => {
                         type='range'
                         className={styles.range}
                     />
-                    <small>2:43</small>
+                    {/* need to add data fron data/songs.js to access time on PlayerControls */}
+                    <small>{songs.songLength}</small>
                 </div>
             </div>
             <div>
