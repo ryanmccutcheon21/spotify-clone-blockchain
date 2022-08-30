@@ -22,7 +22,7 @@ const styles = {
     coverPhoto: `object-cover`
 }
 
-const PlayerControls = () => {
+const PlayerControls = ({ songs }) => {
 
     const {
         currentSong,

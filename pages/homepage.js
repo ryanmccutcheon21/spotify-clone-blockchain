@@ -26,7 +26,6 @@ const HomePage = () => {
   return (
     <div className='flex'>
       <Nav />
-
       <div className='w-full'>
         <Header
           setShowUploadMusic={setShowUploadMusic}
@@ -34,7 +33,7 @@ const HomePage = () => {
         <Playlist
           songs={songs}
         />
-        <PlayerControls />
+        <PlayerControls songs={songs} />
         {showUploadMusic && (
           <UploadModal
             title={title}
