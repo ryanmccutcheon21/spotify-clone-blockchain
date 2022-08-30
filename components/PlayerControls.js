@@ -7,9 +7,9 @@ import shuffle from '../assets/shuffle.svg'
 import playRounded from '../assets/playRounded.svg'
 import pauseIcon from '../assets/pause.svg'
 import unsplashAlbum from '../assets/unsplashAlbum.jpg'
+
 import { useContext } from 'react'
 import { SpotifyContext } from '../context/context'
-import { songs } from '../data/songs'
 
 const styles = {
     albumCoverContainer: `w-20 h-20 mr-3`,
@@ -39,7 +39,7 @@ const PlayerControls = () => {
         onProgressChange
     } = useContext(SpotifyContext)
 
-    // if (!isPlaying) return null
+    if (!isPlaying) return null
 
 
     return (
@@ -66,17 +66,18 @@ const PlayerControls = () => {
                             alt='shuffle'
                         />
                     </div>
-                    <div className={styles.controlIcon}>
+                    <div onClick={e => playPrevious(songs)} className={styles.controlIcon}>
                         <Image
                             src={previous}
                             alt='previous'
                         />
                     </div>
+
                     {isPaused ?
                         <div className={styles.playIcon} onClick={play}>
                             <Image
-                                alt='play'
                                 src={playRounded}
+                                alt='play'
                             />
                         </div>
                         :
@@ -86,12 +87,7 @@ const PlayerControls = () => {
                                 alt='pause'
                             />
                         </div>}
-                    <div className={styles.controlIcon}>
-                        <Image
-                            src={pause}
-                            alt='pause'
-                        />
-                    </div>
+
                     <div className={styles.controlIcon} onClick={e => playNext(songs)}>
                         <Image
                             src={next}

@@ -62,7 +62,6 @@ const Header = ({ setShowUploadMusic }) => {
             </div>
             <div className={styles.playlistTextContent}>
                 <Image
-                    // src='https://angartwork.akamaized.net/webp/?id=150949021&size=296'
                     src='/assets/album.jpg'
                     width={220}
                     height={220}
