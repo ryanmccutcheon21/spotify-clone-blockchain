@@ -7,6 +7,9 @@ import shuffle from '../assets/shuffle.svg'
 import playRounded from '../assets/playRounded.svg'
 import pauseIcon from '../assets/pause.svg'
 import unsplashAlbum from '../assets/unsplashAlbum.jpg'
+import { useContext } from 'react'
+import { SpotifyContext } from '../context/context'
+import { songs } from '../data/songs'
 
 const styles = {
     albumCoverContainer: `w-20 h-20 mr-3`,
@@ -20,6 +23,25 @@ const styles = {
 }
 
 const PlayerControls = () => {
+
+    const {
+        currentSong,
+        isPlaying,
+        volume,
+        onVolumeChange,
+        timestamp,
+        progress,
+        playNext,
+        playPrevious,
+        isPaused,
+        play,
+        pause,
+        onProgressChange
+    } = useContext(SpotifyContext)
+
+    // if (!isPlaying) return null
+
+
     return (
         <div className={styles.mainControl}>
             <div className={styles.flexCenter}>
@@ -32,7 +54,7 @@ const PlayerControls = () => {
                     />
                 </div>
                 <div>
-                    <p>Current Song</p>
+                    <p>{currentSong.title}</p>
                     <p className='opacity=50'>artist</p>
                 </div>
             </div>
@@ -50,7 +72,27 @@ const PlayerControls = () => {
                             alt='previous'
                         />
                     </div>
+                    {isPaused ?
+                        <div className={styles.playIcon} onClick={play}>
+                            <Image
+                                alt='play'
+                                src={playRounded}
+                            />
+                        </div>
+                        :
+                        <div className={styles.pauseIconStyle} onClick={pause}>
+                            <Image
+                                src={pauseIcon}
+                                alt='pause'
+                            />
+                        </div>}
                     <div className={styles.controlIcon}>
+                        <Image
+                            src={pause}
+                            alt='pause'
+                        />
+                    </div>
+                    <div className={styles.controlIcon} onClick={e => playNext(songs)}>
                         <Image
                             src={next}
                             alt='next'
@@ -64,8 +106,10 @@ const PlayerControls = () => {
                     </div>
                 </div>
                 <div className={styles.flexCenter}>
-                    <small>1:30</small>
+                    <small>{timestamp}</small>
                     <input
+                        value={progress}
+                        onChange={e => onProgressChange(e)}
                         type='range'
                         className={styles.range}
                     />
@@ -79,12 +123,14 @@ const PlayerControls = () => {
                         alt='speaker'
                     />
                     <input
+                        value={volume}
+                        onChange={e => onVolumeChange(e)}
                         type='range'
                         id='volume-range'
                     />
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
