@@ -52,8 +52,6 @@ const useSpotify = (
             },
         )
 
-        console.log(tx)
-
         setTitle('')
         setMusicUrl('')
         setShowUploadMusic(false)

@@ -49,7 +49,7 @@ const PlayerControls = ({ songs }) => {
             <div className={styles.flexCenter}>
                 <div className={styles.albumCoverContainer}>
                     <Image
-                        src={unsplashAlbum}
+                        src={currentSong.cover}
                         height={200}
                         width={200}
                         alt='song-cover'
@@ -57,7 +57,7 @@ const PlayerControls = ({ songs }) => {
                 </div>
                 <div>
                     <p>{currentSong.title}</p>
-                    <p className='opacity=50'>Ryan McCutcheon</p>
+                    <p className='opacity=50'>{currentSong.artiste}</p>
                 </div>
             </div>
             <div>
@@ -111,8 +111,7 @@ const PlayerControls = ({ songs }) => {
                         type='range'
                         className={styles.range}
                     />
-                    {/* need to add data fron data/songs.js to access time on PlayerControls */}
-                    <small>{songs.songLength}</small>
+                    <small>{currentSong.songLength}</small>
                 </div>
             </div>
             <div>

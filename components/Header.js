@@ -4,6 +4,7 @@ import { useContext } from 'react'
 import { SpotifyContext } from '../context/context'
 import { SP } from 'next/dist/shared/lib/utils'
 import pauseIcon from '../assets/pause.svg'
+import Kiss from '../assets/6Kiss.jpg'
 
 const styles = {
     header: 'max-w-7xl m-auto p-3',
@@ -79,27 +80,16 @@ const Header = ({ setShowUploadMusic }) => {
             </div>
             <div className={styles.playlistTextContent}>
                 <Image
-                    // src='/assets/album.jpg'
-                    src='https://upload.wikimedia.org/wikipedia/en/b/b3/Trippie_Redd_-_A_Love_Letter_to_You_4.png'
+                    src={isPlaying ? currentSong.cover : Kiss}
                     width={220}
                     height={220}
                     alt='album'
                 />
                 <div className='ml-5'>
-                    <>Album</>
-                    <div className={styles.title}>{currentSong.album}</div>
+                    {/* <>Album</> */}
+                    <div className={styles.title}>{isPlaying ? currentSong.album : 'A Love Letter to You 4'}</div>
                     <div className='flex items-center mt-5'>
-                        <div className={styles.profileAvatarContainer}>
-                            <Image
-                                src='/assets/avatar.jpg'
-                                className='rounded-full'
-                                alt='avatar'
-                                width={20}
-                                height={20}
-                            />
-                        </div>
-                        <p><span className='text-bole'>{currentSong.artiste}</span> • 2020 • 46 songs, 3
-                            hr 20 min
+                        <p><span className='text-bole'>{isPlaying ? currentSong.artiste : 'Trippie Redd'}</span> • 2020 • 12 songs, 1 hr 7 min
                         </p>
                     </div>
                 </div>

@@ -29,7 +29,7 @@ export const songs = [
     songLength: '2:35',
     album: "Feel Good",
     cover:
-      'https://i1.sndcdn.com/artworks-nuOoFnZMZ4Zg-0-t500x500.jpg',
+      'https://i.scdn.co/image/ab67616d0000b27322d98b5aa67f39b74cb2e44e',
     link: 'https://res.cloudinary.com/droq6k9sk/video/upload/v1661893811/Fresco_Trey_-_Feel_Good_feat_Lil_Tjay_Official_Music_Video_ConverteZilla.com_bitxte.mp3',
   },
   {
@@ -40,7 +40,18 @@ export const songs = [
     songLength: '2:56',
     album: "Sunday Best",
     cover:
-      'https://i1.sndcdn.com/artworks-nuOoFnZMZ4Zg-0-t500x500.jpg',
+      'https://i.scdn.co/image/ab67616d0000b2731251a71292e548e193da9f17',
     link: 'https://res.cloudinary.com/droq6k9sk/video/upload/v1661894259/Surfaces_-_Sunday_Best_Official_Music_Video_ConverteZilla.com_nutowx.mp3',
+  },
+  {
+    index: 5,
+    title: "Take a Step Back",
+    artiste: 'Ski Mask The Slump God & XXXTENTACION',
+    plays: '5,104',
+    songLength: '3:29',
+    album: "Take a Step Back",
+    cover:
+      'https://i.scdn.co/image/ab67616d0000b273dbe60a20c985e57a02998239',
+    link: 'https://res.cloudinary.com/droq6k9sk/video/upload/v1661951204/Ski_Mask_The_Slump_God_Xxxtentacoin_-_Take_A_Step_Back_ConverteZilla.com_lg03qs.mp3',
   },
 ]
